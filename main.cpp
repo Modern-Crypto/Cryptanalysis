@@ -12,6 +12,8 @@
 #include<string>
 #include<iostream>
 #include<stdlib.h>
+#include<ctime>
+#include<regex>
 #include"stdafx.h"
 #include"dict1.h"
 
@@ -20,9 +22,10 @@ using namespace std;
 void mergesort(int *a, int low, int high);
 void merge(int *a, int low, int high, int mid);
 bool compare_arrays(int a[], int b[], int t);
+int Exit();
 
 // Main entry of this application.
-void main()
+int main()
 {
 	// Varibles decalaration and initialization
 	int t, difference;
@@ -43,6 +46,8 @@ void main()
 
 
 	cout << "\nEntered ciphertext: " << ciphertext << " and size of key: " << t;
+
+	clock_t begin = clock(); 
 
 	dict_length1 = strlen(DICTIONARY1);
 	cipher_length = strlen(ciphertext);
@@ -95,13 +100,36 @@ void main()
 	else
 		cout << "\nFound in Dictionary 1";
 
+	clock_t end = clock();
+
+	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+
 	cout << "\n";
 	for (j = 0; j<t; j++)
 		cout << "\n" << j << "--" << key[j];
 
 	cout << "\nPlain Text: ";
 	for (j = 0; j < cipher_length; j++)
-		cout << DICTIONARY1[j]; 
+		cout << DICTIONARY1[j];
+
+	cout << "\nTotal time taken: " << elapsed_secs;
+	
+	// Do you want to exit or repeat again?
+	if(Exit() == 1)
+      return 0;
+	else
+      main(); 
+}
+
+static inline bool is_not_alphanum_lower(char c)
+{
+    return (!isalnum(c) || !islower(c));
+}
+
+bool string_is_valid(const std::string &str)
+{
+	cout << "in";
+    return find_if(str.begin(), str.end(), is_not_alphanum_lower) == str.end();
 }
 
 void mergesort(int *a, int low, int high)
@@ -169,4 +197,27 @@ bool compare_arrays(int a[], int b[], int t)
 		}
 	}
 	return true;
+}
+
+
+int Exit() {
+    char exit;
+    cout << "\n";
+    exitloop:
+    cout << "\nDo you want to quit the program? (y/n)";
+    cin >> exit;
+    
+    switch (exit) {
+           case 'y':
+           case 'Y':
+                return 1;
+                break;
+           case 'n':
+           case 'N':
+                return 0;
+                break;
+           default:
+                goto exitloop;
+                break;                
+    } 
 }
