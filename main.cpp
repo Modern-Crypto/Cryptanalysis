@@ -36,14 +36,13 @@ int main()
 	bool compare_result = false;
         
 	cout << "************************************************************************\n"
-		 <<	"* Title  : Project 1 (Cryptanalysis: decryption of substitution ciphers).\n"
-		 <<	"* Author : Pooja Patil and Mayur Kale \n* Date   : 10/16/2014 \n* Version: 1.0\n"
+	     <<	"* Title  : Project 1 (Cryptanalysis: decryption of substitution ciphers).\n"
+	     <<	"* Author : Pooja Patil and Mayur Kale \n* Date   : 10/16/2014 \n* Version: 1.0\n"
 	     << "************************************************************************\n\n";
-    cout << "Enter the ciphertext: ";
+        cout << "Enter the ciphertext: ";
 	cin  >> ciphertext;
 	cout << "Enter the size of key (t): ";
 	cin  >> t;
-
 
 	cout << "\nEntered ciphertext: " << ciphertext << " and size of key: " << t;
 
@@ -116,20 +115,9 @@ int main()
 	
 	// Do you want to exit or repeat again?
 	if(Exit() == 1)
-      return 0;
+      	    return 0;
 	else
-      main(); 
-}
-
-static inline bool is_not_alphanum_lower(char c)
-{
-    return (!isalnum(c) || !islower(c));
-}
-
-bool string_is_valid(const std::string &str)
-{
-	cout << "in";
-    return find_if(str.begin(), str.end(), is_not_alphanum_lower) == str.end();
+            main(); 
 }
 
 void mergesort(int *a, int low, int high)
