@@ -39,10 +39,10 @@ int main()
 	string input = "";
         
 	cout << "************************************************************************\n"
-		 <<	"* Title  : Project 1 (Cryptanalysis: decryption of substitution ciphers).\n"
-		 <<	"* Author : Pooja Patil and Mayur Kale \n* Date   : 10/16/2014 \n* Version: 1.0\n"
+	     <<	"* Title  : Project 1 (Cryptanalysis: decryption of substitution ciphers).\n"
+	     <<	"* Author : Pooja Patil and Mayur Kale \n* Date   : 10/16/2014 \n* Version: 1.0\n"
 	     << "************************************************************************\n\n";
-    cout << "Enter the ciphertext: ";
+        cout << "Enter the ciphertext: ";
 	cin  >> ciphertext;
 
 	while (true) {
@@ -127,9 +127,9 @@ int main()
 	
 	// Do you want to exit or repeat again?
 	if(Exit() == 1)
-      return 0;
+      	    return 0;
 	else
-      main(); 
+      	    main();							 main(); 
 }
 
 void mergesort(int *a, int low, int high)
@@ -213,7 +213,7 @@ int Exit() {
                 break;
            case 'n':
            case 'N':
-				system("cls");
+		system("cls");
                 return 0;
                 break;
            default:
