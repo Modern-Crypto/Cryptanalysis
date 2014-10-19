@@ -129,7 +129,7 @@ int main()
 	if(Exit() == 1)
       	    return 0;
 	else
-      	    main();							 main(); 
+      	    main();
 }
 
 void mergesort(int *a, int low, int high)
