@@ -10,6 +10,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<string>
+#include<sstream>
 #include<iostream>
 #include<stdlib.h>
 #include<ctime>
@@ -27,22 +28,33 @@ int Exit();
 // Main entry of this application.
 int main()
 {
-	// Varibles decalaration and initialization
-	int t, difference;
+	// Variables declaration and initialization
+	int t = 0, difference;
 	int temp, key[40], duplicate_key[40];
 	int i = 0, j = 0, k = 0, x = 0, round = 1;
 	int dict_length1, cipher_length;
 	char ciphertext[50];
 	bool compare_result = false;
+
+	string input = "";
         
 	cout << "************************************************************************\n"
-	     <<	"* Title  : Project 1 (Cryptanalysis: decryption of substitution ciphers).\n"
-	     <<	"* Author : Pooja Patil and Mayur Kale \n* Date   : 10/16/2014 \n* Version: 1.0\n"
+		 <<	"* Title  : Project 1 (Cryptanalysis: decryption of substitution ciphers).\n"
+		 <<	"* Author : Pooja Patil and Mayur Kale \n* Date   : 10/16/2014 \n* Version: 1.0\n"
 	     << "************************************************************************\n\n";
-        cout << "Enter the ciphertext: ";
+    cout << "Enter the ciphertext: ";
 	cin  >> ciphertext;
-	cout << "Enter the size of key (t): ";
-	cin  >> t;
+
+	while (true) {
+		cout << "Enter the size of key (t): ";
+		cin >> input;
+
+		// This code converts from string to number safely.
+		stringstream myStream(input);
+		if (myStream >> t)
+			break;
+		cout << "Invalid number, please try again" << endl;
+	}
 
 	cout << "\nEntered ciphertext: " << ciphertext << " and size of key: " << t;
 
@@ -115,9 +127,9 @@ int main()
 	
 	// Do you want to exit or repeat again?
 	if(Exit() == 1)
-      	    return 0;
+      return 0;
 	else
-            main(); 
+      main(); 
 }
 
 void mergesort(int *a, int low, int high)
@@ -187,7 +199,6 @@ bool compare_arrays(int a[], int b[], int t)
 	return true;
 }
 
-
 int Exit() {
     char exit;
     cout << "\n";
@@ -202,6 +213,7 @@ int Exit() {
                 break;
            case 'n':
            case 'N':
+				system("cls");
                 return 0;
                 break;
            default:
